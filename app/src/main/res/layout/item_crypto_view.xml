@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="24dp">
+
+
+    <RelativeLayout
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageViewFlag"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="16dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:id="@+id/cryptoName"
+            android:layout_toRightOf="@+id/imageViewFlag"
+            android:layout_alignParentTop="true"
+            android:textSize="19sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/cryptoSymbol"
+            android:layout_toRightOf="@+id/imageViewFlag"
+            android:layout_below="@+id/cryptoName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/imageViewFlag" />
+
+        <TextView
+            android:id="@+id/changePercentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="277dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/imageViewFlag" />
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

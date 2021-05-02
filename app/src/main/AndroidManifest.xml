@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.androidexam">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/prosperity"
@@ -9,9 +11,9 @@
         android:roundIcon="@drawable/prosperity"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidExam">
-        <activity android:name=".SplashActivity"
+        <activity android:name=".SecondActivity"
             android:label="BIT-FLUENT"></activity>
-        <activity android:name=".SecondScreenActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
