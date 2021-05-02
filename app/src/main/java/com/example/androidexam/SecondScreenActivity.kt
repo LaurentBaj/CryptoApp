@@ -16,6 +16,6 @@ class SecondScreenActivity : AppCompatActivity() {
             val intent = Intent(this, SplashActivity::class.java)
             startActivity(intent)
             finish()
-        }, 1500)
+        }, 2500)
     }
 }
