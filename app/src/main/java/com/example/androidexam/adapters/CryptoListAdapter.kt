@@ -22,6 +22,7 @@ class CryptoListAdapter(private var list: List<CryptoStats>) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: CryptoListAdapter.CryptoViewHolder, position: Int) {
         var current = list[position]
+
         holder.bind(current)
 
         holder.itemView.setOnClickListener {
