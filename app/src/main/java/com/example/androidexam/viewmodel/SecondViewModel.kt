@@ -12,13 +12,17 @@ import okhttp3.Dispatcher
 
 class SecondViewModel : ViewModel() {
     val liveStats = MutableLiveData<List<CryptoStats>> (ArrayList<CryptoStats>())
+    var isLoading = MutableLiveData<Boolean> (false)
+
     private var repo = CryptoRepo()
 
     fun refresh() {
+        isLoading.value = true
         viewModelScope.launch {
             var result = withContext(Dispatchers.IO) {
                 repo.getCryptoSummary()
             }
+            isLoading.value = false
             liveStats.value = result
         }
     }

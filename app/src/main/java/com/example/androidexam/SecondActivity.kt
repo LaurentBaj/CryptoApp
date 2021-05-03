@@ -2,6 +2,7 @@ package com.example.androidexam
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidexam.adapters.CryptoListAdapter
@@ -28,6 +29,10 @@ class SecondActivity : AppCompatActivity() {
 
         viewModel.liveStats.observe(this, { list ->
             listAdapter.update(list)
+        })
+
+        viewModel.isLoading.observe(this, { loading ->
+            binding.progressBar.visibility = if (loading) View.VISIBLE else View.INVISIBLE
         })
     }
 

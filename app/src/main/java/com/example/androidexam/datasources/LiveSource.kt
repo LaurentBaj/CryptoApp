@@ -15,7 +15,7 @@ class LiveSource {
         if(response.isSuccessful) {
             var cryptoCurrencies = JSONObject(response.body).optJSONArray("data")
 
-            cryptoCurrencies.let {
+            cryptoCurrencies?.let {
                 for(i in 0 until cryptoCurrencies.length()) {
                     list.add(
                         CryptoStats(

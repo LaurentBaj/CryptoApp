@@ -1,6 +1,5 @@
 package com.example.androidexam.repos
 
-import com.example.androidexam.datasources.DummySource
 import com.example.androidexam.datasources.LiveSource
 import com.example.androidexam.model.CryptoStats
 
@@ -10,6 +9,7 @@ class CryptoRepo {
 
     suspend fun getCryptoSummary() : List<CryptoStats> {
         var list = liveSource.getSummary()
-        return list.sortedByDescending { e -> e.price } // Not Working
+        return list.sortedByDescending { it.price }
     }
 }
+
