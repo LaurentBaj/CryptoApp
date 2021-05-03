@@ -13,16 +13,18 @@ class LiveSource {
         var response = get("https://api.coincap.io/v2/assets")
 
         if(response.isSuccessful) {
-            var cryptoCurrencies = JSONObject(response.body).getJSONArray("data")
+            var cryptoCurrencies = JSONObject(response.body).optJSONArray("data")
 
-            for(i in 0 until cryptoCurrencies.length()) {
-                list.add(
-                    CryptoStats(
-                    cryptoCurrencies.getJSONObject(i).getString("name"),
-                    cryptoCurrencies.getJSONObject(i).getString("symbol"),
-                    cryptoCurrencies.getJSONObject(i).getString("priceUsd"),
-                    cryptoCurrencies.getJSONObject(i).getString("changePercent24Hr"),
-                ))
+            cryptoCurrencies.let {
+                for(i in 0 until cryptoCurrencies.length()) {
+                    list.add(
+                        CryptoStats(
+                            cryptoCurrencies.getJSONObject(i).getString("name"),
+                            cryptoCurrencies.getJSONObject(i).getString("symbol"),
+                            cryptoCurrencies.getJSONObject(i).getString("priceUsd"),
+                            cryptoCurrencies.getJSONObject(i).getString("changePercent24Hr"),
+                        ))
+                }
             }
         }
 

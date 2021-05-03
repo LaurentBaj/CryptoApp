@@ -10,6 +10,6 @@ class CryptoRepo {
 
     suspend fun getCryptoSummary() : List<CryptoStats> {
         var list = liveSource.getSummary()
-        return list.sortedByDescending { it.price }
+        return list.sortedByDescending { e -> e.price } // Not Working
     }
 }
