@@ -1,8 +1,12 @@
 package com.example.androidexam.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidexam.FourthActivity
+import com.example.androidexam.SecondActivity
 import com.example.androidexam.databinding.ItemCryptoViewBinding
 import com.example.androidexam.model.CryptoStats
 import com.squareup.picasso.Picasso
@@ -17,7 +21,13 @@ class CryptoListAdapter(private var list: List<CryptoStats>) : RecyclerView.Adap
 
 
     override fun onBindViewHolder(holder: CryptoListAdapter.CryptoViewHolder, position: Int) {
-        holder.bind(list[position])
+        var current = list[position]
+        holder.bind(current)
+
+        holder.itemView.setOnClickListener {
+            var intent = Intent(holder.itemView.context, FourthActivity::class.java)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount() = list.size

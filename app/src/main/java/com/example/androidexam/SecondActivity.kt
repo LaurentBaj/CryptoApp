@@ -1,15 +1,16 @@
 package com.example.androidexam
 
-import androidx.appcompat.app.AppCompatActivity
+import android.R
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidexam.adapters.CryptoListAdapter
 import com.example.androidexam.databinding.ActivitySecondBinding
-import com.example.androidexam.datasources.DummySource
 import com.example.androidexam.model.CryptoStats
 import com.example.androidexam.viewmodel.SecondViewModel
+
 
 class SecondActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySecondBinding

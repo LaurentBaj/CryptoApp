@@ -8,7 +8,6 @@ import com.example.androidexam.repos.CryptoRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.Dispatcher
 
 class SecondViewModel : ViewModel() {
     val liveStats = MutableLiveData<List<CryptoStats>> (ArrayList<CryptoStats>())

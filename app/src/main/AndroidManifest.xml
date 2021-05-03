@@ -11,8 +11,10 @@
         android:roundIcon="@drawable/prosperity"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidExam">
-        <activity android:name=".SecondActivity"
-            android:label="BIT-FLUENT"></activity>
+        <activity android:name=".FourthActivity" />
+        <activity
+            android:name=".SecondActivity"
+            android:label="BIT-FLUENT" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
