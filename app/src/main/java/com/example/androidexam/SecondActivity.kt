@@ -8,9 +8,11 @@ import com.example.androidexam.adapters.CryptoListAdapter
 import com.example.androidexam.databinding.ActivitySecondBinding
 import com.example.androidexam.datasources.DummySource
 import com.example.androidexam.model.CryptoStats
+import com.example.androidexam.viewmodel.SecondViewModel
 
 class SecondActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySecondBinding
+    private val viewModel = SecondViewModel()
 
     private lateinit var listAdapter: CryptoListAdapter
 
@@ -24,6 +26,13 @@ class SecondActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = listAdapter
 
-        listAdapter.update(DummySource().getSummary())
+        viewModel.liveStats.observe(this, { list ->
+            listAdapter.update(list)
+        })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.refresh()
     }
 }
