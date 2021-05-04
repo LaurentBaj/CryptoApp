@@ -11,37 +11,39 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/sixthImage"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/ic_slanted_gradient"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/sixthHeaderName"
             app:layout_constraintHorizontal_bias="0.061"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/sixthHeaderName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="52dp"
             android:text="CryptoName"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/sixthHeaderPrice"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/sixthImage"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.352" />
 
         <TextView
+            android:id="@+id/sixthHeaderPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Price: "
@@ -49,14 +51,15 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.446"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:layout_constraintStart_toEndOf="@+id/sixthImage"
+            app:layout_constraintTop_toBottomOf="@+id/sixthHeaderName"
             app:layout_constraintVertical_bias="0.301" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
         android:layout_height="530dp"
         android:background="@color/grey"
@@ -66,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/sixthLabelMoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="USD"
@@ -78,59 +81,65 @@
             app:layout_constraintVertical_bias="0.311" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editTextSell"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Amount"
             android:background="@drawable/square"
+            android:hint="Amount"
+            android:inputType="number"
             android:padding="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.392"
-            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintStart_toEndOf="@+id/sixthLabelMoney"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.303" />
+            app:layout_constraintVertical_bias="0.305" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/sixthLabelCrypto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Crypto"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/editText2"
-            app:layout_constraintHorizontal_bias="0.596"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toStartOf="@+id/editTextCrypto"
+            app:layout_constraintHorizontal_bias="0.592"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
-            app:layout_constraintVertical_bias="0.282" />
+            app:layout_constraintTop_toBottomOf="@+id/sixthLabelMoney"
+            app:layout_constraintVertical_bias="0.513" />
 
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/editTextCrypto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="244dp"
             android:background="@drawable/square"
             android:hint="Amount"
+            android:singleLine="true"
+            android:inputType="number"
             android:padding="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.642"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText"
-            app:layout_constraintVertical_bias="0.181" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextSell"
+            app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sell"
+            android:layout_marginBottom="132dp"
+            android:text="Buy"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.476"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2" />
-
+            app:layout_constraintTop_toBottomOf="@+id/editTextCrypto"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
+            android:id="@+id/sixthInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="You have ..."
