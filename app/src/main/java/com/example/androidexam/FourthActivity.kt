@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.androidexam.databinding.ActivityFourthBinding
+import com.squareup.picasso.Picasso
 
 class FourthActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFourthBinding
@@ -22,5 +23,13 @@ class FourthActivity : AppCompatActivity() {
             val intent = Intent(this, SixthActivity::class.java)
             startActivity(intent)
         }
+
+        // Get passed name, price and image
+        binding.fourthCryptoName.text = intent.getStringExtra("name")
+        binding.cryptoPrice.text = "$" + intent.getStringExtra("priceUsd")
+
+        var symbol = intent.getStringExtra("symbol")?.toLowerCase()
+        Picasso.get().load("https://static.coincap.io/assets/icons/${symbol}@2x.png")
+            .into(binding.fourthImg)
     }
 }

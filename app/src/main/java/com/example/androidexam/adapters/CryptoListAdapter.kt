@@ -19,11 +19,17 @@ class CryptoListAdapter(private var list: List<CryptoStats>) : RecyclerView.Adap
 
 
     override fun onBindViewHolder(holder: CryptoListAdapter.CryptoViewHolder, position: Int) {
-        holder.bind(list[position])
+        var current = list[position]
+        holder.bind(current)
 
         // Make each card clickable
         holder.itemView.setOnClickListener {
             var intent = Intent(holder.itemView.context, FourthActivity::class.java)
+
+            intent.putExtra("name", current.name)
+            intent.putExtra("priceUsd", current.priceUsd.toString())
+            intent.putExtra("symbol", current.symbol)
+
             holder.itemView.context.startActivity(intent)
         }
     }
@@ -39,12 +45,6 @@ class CryptoListAdapter(private var list: List<CryptoStats>) : RecyclerView.Adap
             binding.price.text = sliceToOutput(stats.priceUsd.toString(), '$')
             Picasso.get().load("https://static.coincap.io/assets/icons/${stats.symbol.toString().toLowerCase()}@2x.png").into(binding.imageViewCrypto)
         }
-
-        // Avert too many decimals in output
-        private fun sliceToOutput(input: String, symbol: Char): String {
-            val slicedInput = input.split(".")
-            return slicedInput[0] + "." + slicedInput[1].slice(0..0) + symbol
-        }
     }
 
     fun update(newList: List<CryptoStats>) {
@@ -52,4 +52,10 @@ class CryptoListAdapter(private var list: List<CryptoStats>) : RecyclerView.Adap
         notifyDataSetChanged()
     }
 
+}
+
+// Avert too many decimals in output
+fun sliceToOutput(input: String, symbol: Char): String {
+    val slicedInput = input.split(".")
+    return slicedInput[0] + "." + slicedInput[1].slice(0..0) + symbol
 }
