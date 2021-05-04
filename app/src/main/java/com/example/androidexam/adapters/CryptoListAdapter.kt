@@ -20,25 +20,26 @@ class CryptoListAdapter(private var list: List<CryptoStats>) : RecyclerView.Adap
         holder.bind(list[position])
     }
 
-    override fun getItemCount() = list.size
+    override fun getItemCount(): Int = list.size
 
 
     class CryptoViewHolder(private val binding: ItemCryptoViewBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(stats: CryptoStats) {
 
             // Make Price return only 2 decimals
-            var slicedPrice = stats.price.split(".")
-            stats.price = slicedPrice[0] + "." + slicedPrice[1].slice(0..1) + "$"
+            /*var slicedPrice = stats.priceUsd.split(".")
+            stats.priceUsd = slicedPrice[0] + "." + slicedPrice[1].slice(0..1) + "$"
 
             // Make rate og change return only 2 decimals
             var slicedPercentage = stats.changePercent24hr.split(".")
-            stats.changePercent24hr = slicedPercentage[0] + "." + slicedPercentage[1].slice(0..0) + "%"
+            stats.changePercent24hr = slicedPercentage[0] + "." + slicedPercentage[1].slice(0..0) + "%"*/
+
 
             binding.cryptoName.text = stats.name
             binding.changePercentage.text = stats.changePercent24hr
             binding.cryptoSymbol.text = stats.symbol
-            binding.price.text = stats.price
-            Picasso.get().load("https://static.coincap.io/assets/icons/${stats.symbol.toLowerCase()}@2x.png").into(binding.imageViewFlag)
+            binding.price.text = stats.priceUsd
+            Picasso.get().load("https://static.coincap.io/assets/icons/${stats.symbol.toLowerCase()}@2x.png").into(binding.imageViewCrypto)
         }
     }
 

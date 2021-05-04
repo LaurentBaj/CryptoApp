@@ -27,7 +27,7 @@ class CryptoApiClient {
         try {
             var response = cryptoApi.getSummary().execute()
             if (response.isSuccessful) {
-                response.body()?.CryptoCurrencies?.let { currency ->
+                response.body()?.data?.let { currency ->
                     return currency
                 }
             }
