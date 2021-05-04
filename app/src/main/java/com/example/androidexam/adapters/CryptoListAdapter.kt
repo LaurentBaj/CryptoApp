@@ -1,8 +1,10 @@
 package com.example.androidexam.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidexam.FourthActivity
 import com.example.androidexam.databinding.ItemCryptoViewBinding
 import com.example.androidexam.model.CryptoStats
 import com.squareup.picasso.Picasso
@@ -18,6 +20,12 @@ class CryptoListAdapter(private var list: List<CryptoStats>) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: CryptoListAdapter.CryptoViewHolder, position: Int) {
         holder.bind(list[position])
+
+        // Make each card clickable
+        holder.itemView.setOnClickListener {
+            var intent = Intent(holder.itemView.context, FourthActivity::class.java)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = list.size
@@ -35,7 +43,7 @@ class CryptoListAdapter(private var list: List<CryptoStats>) : RecyclerView.Adap
         // Avert too many decimals in output
         private fun sliceToOutput(input: String, symbol: Char): String {
             val slicedInput = input.split(".")
-            return slicedInput[0] + "." + slicedInput[1].slice(0..1) + symbol
+            return slicedInput[0] + "." + slicedInput[1].slice(0..0) + symbol
         }
     }
 
