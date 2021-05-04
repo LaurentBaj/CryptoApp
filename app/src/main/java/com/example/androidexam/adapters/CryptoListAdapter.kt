@@ -25,21 +25,17 @@ class CryptoListAdapter(private var list: List<CryptoStats>) : RecyclerView.Adap
 
     class CryptoViewHolder(private val binding: ItemCryptoViewBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(stats: CryptoStats) {
-
-            // Make Price return only 2 decimals
-            /*var slicedPrice = stats.priceUsd.split(".")
-            stats.priceUsd = slicedPrice[0] + "." + slicedPrice[1].slice(0..1) + "$"
-
-            // Make rate og change return only 2 decimals
-            var slicedPercentage = stats.changePercent24hr.split(".")
-            stats.changePercent24hr = slicedPercentage[0] + "." + slicedPercentage[1].slice(0..0) + "%"*/
-
-
             binding.cryptoName.text = stats.name
-            binding.changePercentage.text = stats.changePercent24hr
+            binding.changePercentage.text = sliceToOutput(stats.changePercent24Hr.toString(), '%')
             binding.cryptoSymbol.text = stats.symbol
-            binding.price.text = stats.priceUsd
-            Picasso.get().load("https://static.coincap.io/assets/icons/${stats.symbol.toLowerCase()}@2x.png").into(binding.imageViewCrypto)
+            binding.price.text = sliceToOutput(stats.priceUsd.toString(), '$')
+            Picasso.get().load("https://static.coincap.io/assets/icons/${stats.symbol.toString().toLowerCase()}@2x.png").into(binding.imageViewCrypto)
+        }
+
+        // Avert too many decimals in output
+        private fun sliceToOutput(input: String, symbol: Char): String {
+            val slicedInput = input.split(".")
+            return slicedInput[0] + "." + slicedInput[1].slice(0..1) + symbol
         }
     }
 
@@ -47,4 +43,5 @@ class CryptoListAdapter(private var list: List<CryptoStats>) : RecyclerView.Adap
         list = newList
         notifyDataSetChanged()
     }
+
 }
