@@ -22,5 +22,6 @@ class SixthActivity : AppCompatActivity() {
 
         binding.sixthHeaderName.text = data.name
         binding.sixthHeaderPrice.text = data.priceUsd
+        binding.sixthLabelCrypto.text = data.symbol!!.toUpperCase()
     }
 }

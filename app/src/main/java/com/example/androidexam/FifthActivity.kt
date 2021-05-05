@@ -21,5 +21,6 @@ class FifthActivity : AppCompatActivity() {
 
         binding.fifthHeaderName.text = data.name
         binding.fifthHeaderPrice.text = data.priceUsd
+        binding.fifthLabelCrypto.text = data.symbol!!.toUpperCase()
     }
 }
