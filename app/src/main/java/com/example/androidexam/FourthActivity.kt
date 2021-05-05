@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.androidexam.databinding.ActivityFourthBinding
 import com.squareup.picasso.Picasso
+import kotlin.reflect.jvm.internal.impl.load.java.structure.JavaClass
 
 class FourthActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFourthBinding
@@ -14,22 +15,29 @@ class FourthActivity : AppCompatActivity() {
         binding = ActivityFourthBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Data Passed by intent
+        val intentPassed = intent.getStringArrayListExtra("data")
+        val data = IntentData(intentPassed!![0], intentPassed[1], intentPassed[2])
+
+        // Get passed name, price and image
+        binding.fourthCryptoName.text = data.name
+        binding.cryptoPrice.text = data.priceUsd
+        Picasso.get()
+                .load("https://static.coincap.io/assets/icons/${data.symbol}@2x.png")
+                .into(binding.fourthImg)
+
+
+        // Buttons to fifth and sixth act
         binding.btnBuy.setOnClickListener {
             val intent = Intent(this, FifthActivity::class.java)
+            intent.putExtra("data", intentPassed)
             startActivity(intent)
         }
 
         binding.btnSell.setOnClickListener {
             val intent = Intent(this, SixthActivity::class.java)
+            intent.putExtra("data", intentPassed)
             startActivity(intent)
         }
-
-        // Get passed name, price and image
-        binding.fourthCryptoName.text = intent.getStringExtra("name")
-        binding.cryptoPrice.text = "$" + intent.getStringExtra("priceUsd")
-
-        var symbol = intent.getStringExtra("symbol")?.toLowerCase()
-        Picasso.get().load("https://static.coincap.io/assets/icons/${symbol}@2x.png")
-            .into(binding.fourthImg)
     }
 }
