@@ -62,7 +62,7 @@
         app:layout_constraintVertical_bias="0.498">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/userInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="You have this many:"
@@ -80,7 +80,7 @@
             app:layout_constraintEnd_toStartOf="@+id/btnSell"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/userInfo" />
 
         <Button
             android:id="@+id/btnSell"
@@ -91,7 +91,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/btnBuy"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/userInfo" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

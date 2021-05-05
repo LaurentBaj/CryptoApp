@@ -26,6 +26,7 @@ class FourthActivity : AppCompatActivity() {
                 .load("https://static.coincap.io/assets/icons/${data.symbol}@2x.png")
                 .into(binding.fourthImg)
 
+        binding.userInfo.text = "You have 0.5 BTC \n 0.5 x ${data.priceUsd} \n Value 27 000 USD"
 
         // Buttons to fifth and sixth act
         binding.btnBuy.setOnClickListener {
