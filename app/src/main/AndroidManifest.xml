@@ -10,10 +10,11 @@
         android:label="BIT-FLUENT"
         android:roundIcon="@drawable/prosperity"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AndroidExam"
-
-        >
-
+        android:theme="@style/Theme.AndroidExam">
+        <activity android:name=".SeventhActivity"></activity>
+        <activity android:name=".ThirdActivity" />
+        <activity android:name=".SixthActivity" />
+        <activity android:name=".FifthActivity" />
         <activity android:name=".FourthActivity" />
         <activity
             android:name=".SecondActivity"

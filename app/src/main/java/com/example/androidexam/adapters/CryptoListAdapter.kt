@@ -3,10 +3,9 @@ package com.example.androidexam.adapters
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidexam.FourthActivity
-import com.example.androidexam.SecondActivity
+import com.example.androidexam.IntentData
 import com.example.androidexam.databinding.ItemCryptoViewBinding
 import com.example.androidexam.model.CryptoStats
 import com.squareup.picasso.Picasso
@@ -19,37 +18,30 @@ class CryptoListAdapter(private var list: List<CryptoStats>) : RecyclerView.Adap
         return CryptoViewHolder(ItemCryptoViewBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
-
     override fun onBindViewHolder(holder: CryptoListAdapter.CryptoViewHolder, position: Int) {
         var current = list[position]
-
         holder.bind(current)
 
+        // Make each card clickable + send its values
         holder.itemView.setOnClickListener {
             var intent = Intent(holder.itemView.context, FourthActivity::class.java)
+
+            val data = IntentData(current.name, current.priceUsd.toString() + "$", current.symbol)
+            intent.putExtra("data", arrayListOf(data.name, data.priceUsd, data.symbol?.toLowerCase()))
+
             holder.itemView.context.startActivity(intent)
         }
     }
 
-    override fun getItemCount() = list.size
-
+    override fun getItemCount(): Int = list.size
 
     class CryptoViewHolder(private val binding: ItemCryptoViewBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(stats: CryptoStats) {
-
-            // Make Price return only 2 decimals
-            var slicedPrice = stats.price.split(".")
-            stats.price = slicedPrice[0] + "." + slicedPrice[1].slice(0..1) + "$"
-
-            // Make rate og change return only 2 decimals
-            var slicedPercentage = stats.changePercent24hr.split(".")
-            stats.changePercent24hr = slicedPercentage[0] + "." + slicedPercentage[1].slice(0..0) + "%"
-
             binding.cryptoName.text = stats.name
-            binding.changePercentage.text = stats.changePercent24hr
+            binding.changePercentage.text = sliceToOutput(stats.changePercent24Hr.toString(), '%')
             binding.cryptoSymbol.text = stats.symbol
-            binding.price.text = stats.price
-            Picasso.get().load("https://static.coincap.io/assets/icons/${stats.symbol.toLowerCase()}@2x.png").into(binding.imageViewFlag)
+            binding.price.text = sliceToOutput(stats.priceUsd.toString(), '$')
+            Picasso.get().load("https://static.coincap.io/assets/icons/${stats.symbol.toString().toLowerCase()}@2x.png").into(binding.imageViewCrypto)
         }
     }
 
@@ -57,4 +49,10 @@ class CryptoListAdapter(private var list: List<CryptoStats>) : RecyclerView.Adap
         list = newList
         notifyDataSetChanged()
     }
+}
+
+// Avert more than two decimals
+fun sliceToOutput(input: String, symbol: Char): String {
+    val slicedInput = input.split(".")
+    return slicedInput[0] + "." + slicedInput[1].slice(0..0) + symbol
 }

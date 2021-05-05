@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FifthActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/fifthImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_slanted_gradient"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.18"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8" />
+
+        <TextView
+            android:id="@+id/fifthHeaderName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="52dp"
+            android:text="CryptoName"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toEndOf="@+id/fifthImage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.502" />
+
+        <TextView
+            android:id="@+id/fifthHeaderPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price: "
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.445"
+            app:layout_constraintStart_toEndOf="@+id/fifthImage"
+            app:layout_constraintTop_toBottomOf="@+id/fifthHeaderName"
+            app:layout_constraintVertical_bias="0.552" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="530dp"
+        android:background="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <TextView
+            android:id="@+id/fifthLabelMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="USD"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.27"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.311" />
+
+        <EditText
+            android:id="@+id/editTextBuy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square"
+            android:hint="Amount"
+            android:padding="16dp"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.392"
+            app:layout_constraintStart_toEndOf="@+id/fifthLabelMoney"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.305" />
+
+
+        <TextView
+            android:id="@+id/fifthLabelCrypto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="252dp"
+            android:text="Crypto"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.26"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fifthLabelMoney"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <EditText
+            android:id="@+id/editTextCrypto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square"
+            android:hint="Amount"
+            android:padding="16dp"
+            android:inputType="number"
+            app:layout_constraintBottom_toTopOf="@+id/btnBuy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.365"
+            app:layout_constraintStart_toEndOf="@+id/fifthLabelCrypto"
+            app:layout_constraintTop_toBottomOf="@+id/editTextBuy"
+            app:layout_constraintVertical_bias="0.292" />
+
+        <Button
+            android:id="@+id/btnBuy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buy"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fifthLabelCrypto"
+            app:layout_constraintVertical_bias="0.546" />
+
+        <TextView
+            android:id="@+id/fifthInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You have ..."
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnBuy"
+            app:layout_constraintVertical_bias="0.486" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
