@@ -27,6 +27,11 @@ class SecondActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = listAdapter
 
+        // Observables
+        viewModel.portFolio.observe(this, {list ->
+            binding.pointView.text = "Points: " + list.worth.toString()
+        })
+
         viewModel.liveStats.observe(this, { list ->
             listAdapter.update(list)
         })
@@ -35,7 +40,7 @@ class SecondActivity : AppCompatActivity() {
             binding.progressBar.visibility = if (loading) View.VISIBLE else View.INVISIBLE
         })
 
-        findViewById<TextView>(R.id.pointView).setOnClickListener {
+        binding.pointView.setOnClickListener {
             val intent = Intent(this, ThirdActivity::class.java)
             startActivity(intent)
         }

@@ -8,6 +8,6 @@ data class PortFolio (
     @PrimaryKey(autoGenerate = false)
     val symbol: String,
 
-    val volume: Float,
-    val worth: Float
+    val volume: Double,
+    val worth: Double
     )

@@ -7,11 +7,12 @@ import java.util.*
 
 @Entity
 data class Transaction(
-    @PrimaryKey(autoGenerate = false)
-    val symbol: String,
+    @PrimaryKey(autoGenerate = true)
+    val id: Long,
 
+    val symbol: String,
     val type: String,
     val volume: Double,
-    val Worth: Double,
+    val worth: Double,
 )
 

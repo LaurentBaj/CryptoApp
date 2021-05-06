@@ -32,7 +32,7 @@ abstract class AppDB : RoomDatabase() {
                     context.applicationContext,
                     AppDB::class.java,
                     "AppDB"
-                ).build().also {
+                ).fallbackToDestructiveMigration().build().also {
                     INSTANCE = it
                 }
             }

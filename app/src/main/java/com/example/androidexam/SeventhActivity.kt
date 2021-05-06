@@ -20,12 +20,15 @@ class SeventhActivity : AppCompatActivity() {
 
         val dao = AppDB.getInstance(this).transDao
 
-        val transactions = Transaction("BTC", "Sold", 0.5, 27000.2)
+        val portFolio = PortFolio("BTC", 0.5, 27000.2)
+        val transaction = Transaction(symbol = "BTC", type = "Sold", volume = 0.2, worth = 3000.2, id = 0)
 
         lifecycleScope.launch {
-            dao.insertTransaction(transaction = transactions)
+            dao.insertPortfolio(portFolio)
+            dao.insertTransaction(transaction)
+            dao.getPortFolioWithTransactions("BTC")
         }
-
-        binding.pointView.text = transactions.symbol
+        binding.pointView.text = portFolio.symbol
     }
+
 }
