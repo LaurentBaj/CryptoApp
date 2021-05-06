@@ -25,11 +25,16 @@ class ThirdViewModel : ViewModel() {
     private var _points = MutableLiveData<Double>()
     var Points = _points
 
+    private val _portFolio = MutableLiveData<PortFolio>()
+    val portFolio: LiveData<PortFolio> get() = _portFolio
+
+
     private var repo = CryptoRepo()
 
     fun dbInit(context: Context) {
         transDao = AppDB.getInstance(context).transDao
         getPoints()
+        getPortfolio()
     }
 
     private val _error = MutableLiveData<Throwable>()
@@ -42,6 +47,19 @@ class ThirdViewModel : ViewModel() {
             viewModelScope.launch {
                 val points = transDao.getWorth()
                 _points.postValue(points)
+            }
+        } catch (e: Exception) {
+            e.fillInStackTrace()
+            _error.postValue(e)
+            Log.d("MainView", "Error: ${e.message}")
+        }
+    }
+
+    private fun getPortfolio() {
+        try {
+            viewModelScope.launch {
+                val portData = transDao.fetchData()
+                _portFolio.postValue(portData)
             }
         } catch (e: Exception) {
             e.fillInStackTrace()

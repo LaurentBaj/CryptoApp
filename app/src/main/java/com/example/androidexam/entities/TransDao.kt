@@ -21,4 +21,8 @@ interface TransDao {
     @androidx.room.Transaction
     @Query("SELECT SUM(worth) FROM PORTFOLIO")
     suspend fun getWorth() : Double
+
+    @androidx.room.Transaction
+    @Query("SELECT * FROM PortFolio")
+    suspend fun fetchData() : PortFolio
 }
