@@ -1,10 +1,11 @@
 package com.example.androidexam
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidexam.adapters.CryptoListAdapter
 import com.example.androidexam.databinding.ActivitySecondBinding
@@ -22,28 +23,43 @@ class SecondActivity : AppCompatActivity() {
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        viewModel.dbInit(this)
+
+        var sharedPreferences: SharedPreferences = getSharedPreferences("com.example.androidexam.preference", Context.MODE_PRIVATE)
+
+        // Check new user
+        if(sharedPreferences.getLong("FIRST_STARTUP_ID", -1L) == -1L) {
+            viewModel.atInstall()
+            sharedPreferences.edit().putLong("FIRST_STARTUP_ID", 1L).apply()
+        }
+
         listAdapter = CryptoListAdapter(ArrayList<CryptoStats>())
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = listAdapter
 
         // Observables
-        viewModel.portFolio.observe(this, {list ->
-            binding.pointView.text = "Points: " + list.worth.toString()
+        observableData()
+
+        // -> Third Act
+        binding.pointView.setOnClickListener {
+            val intent = Intent(this, ThirdActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun observableData() {
+        viewModel.Points.observe(this, {
+            binding.pointView.text = "Points: $it"
         })
 
-        viewModel.liveStats.observe(this, { list ->
-            listAdapter.update(list)
+        viewModel.liveStats.observe(this, { newList ->
+            listAdapter.update(newList)
         })
 
         viewModel.isLoading.observe(this, { loading ->
             binding.progressBar.visibility = if (loading) View.VISIBLE else View.INVISIBLE
         })
-
-        binding.pointView.setOnClickListener {
-            val intent = Intent(this, ThirdActivity::class.java)
-            startActivity(intent)
-        }
     }
 
     override fun onResume() {
