@@ -4,8 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.androidexam.databinding.ActivityFourthBinding
+import com.example.androidexam.model.IntentData
 import com.squareup.picasso.Picasso
-import kotlin.reflect.jvm.internal.impl.load.java.structure.JavaClass
+import java.util.ArrayList
 
 class FourthActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFourthBinding
@@ -19,7 +20,7 @@ class FourthActivity : AppCompatActivity() {
         val intentPassed = intent.getStringArrayListExtra("data")
         val data = IntentData(intentPassed!![0], intentPassed[1], intentPassed[2])
 
-        // Get passed name, price and image
+        // UI
         binding.fourthCryptoName.text = data.name
         binding.cryptoPrice.text = data.priceUsd
         Picasso.get()
@@ -30,15 +31,17 @@ class FourthActivity : AppCompatActivity() {
 
         // Buttons to fifth and sixth act
         binding.btnBuy.setOnClickListener {
-            val intent = Intent(this, FifthActivity::class.java)
-            intent.putExtra("data", intentPassed)
-            startActivity(intent)
+           sendIntent(Intent(this, FifthActivity::class.java), intentPassed)
         }
 
         binding.btnSell.setOnClickListener {
-            val intent = Intent(this, SixthActivity::class.java)
-            intent.putExtra("data", intentPassed)
-            startActivity(intent)
+            sendIntent(Intent(this, SixthActivity::class.java), intentPassed)
         }
     }
+
+    private fun sendIntent(intent: Intent, intentPassed: ArrayList<String>) {
+        intent.putExtra("data", intentPassed)
+        startActivity(intent)
+    }
 }
+

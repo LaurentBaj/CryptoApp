@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidexam.FourthActivity
-import com.example.androidexam.IntentData
+import com.example.androidexam.model.IntentData
 import com.example.androidexam.databinding.ItemCryptoViewBinding
 import com.example.androidexam.model.CryptoStats
 import com.squareup.picasso.Picasso
@@ -28,6 +28,7 @@ class CryptoListAdapter(private var list: List<CryptoStats>) : RecyclerView.Adap
 
             val data = IntentData(current.name, current.priceUsd.toString() + "$", current.symbol)
             intent.putExtra("data", arrayListOf(data.name, data.priceUsd, data.symbol?.toLowerCase()))
+
 
             holder.itemView.context.startActivity(intent)
         }

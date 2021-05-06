@@ -35,7 +35,6 @@ class SecondActivity : AppCompatActivity() {
             binding.progressBar.visibility = if (loading) View.VISIBLE else View.INVISIBLE
         })
 
-
         findViewById<TextView>(R.id.pointView).setOnClickListener {
             val intent = Intent(this, ThirdActivity::class.java)
             startActivity(intent)

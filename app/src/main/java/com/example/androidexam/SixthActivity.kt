@@ -2,8 +2,8 @@ package com.example.androidexam
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.androidexam.databinding.ActivityFifthBinding
 import com.example.androidexam.databinding.ActivitySixthBinding
+import com.example.androidexam.model.IntentData
 import com.squareup.picasso.Picasso
 
 class SixthActivity : AppCompatActivity() {
@@ -19,7 +19,7 @@ class SixthActivity : AppCompatActivity() {
         Picasso.get()
                 .load("https://static.coincap.io/assets/icons/${data.symbol}@2x.png")
                 .into(binding.sixthImage)
-
+        
         binding.sixthHeaderName.text = data.name
         binding.sixthHeaderPrice.text = data.priceUsd
         binding.sixthLabelCrypto.text = data.symbol!!.toUpperCase()
