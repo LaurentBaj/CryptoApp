@@ -33,10 +33,6 @@ class SecondViewModel : ViewModel() {
     }
 
     private val _error = MutableLiveData<Throwable>()
-    val error: LiveData<Throwable> get() = _error
-    private val exceptionHandler = CoroutineExceptionHandler { _, error -> _error.postValue(error)}
-
-
     private fun getPoints() {
         try {
             viewModelScope.launch {
@@ -49,7 +45,6 @@ class SecondViewModel : ViewModel() {
             Log.d("MainView", "Error: ${e.message}")
         }
     }
-
 
     fun atInstall() {
         try {

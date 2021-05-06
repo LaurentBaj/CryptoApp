@@ -18,43 +18,16 @@ import kotlinx.coroutines.withContext
 import java.lang.Exception
 
 class ThirdViewModel : ViewModel() {
-    val liveStats = MutableLiveData<List<CryptoStats>> (ArrayList())
-    var isLoading = MutableLiveData(false)
-
     lateinit var transDao: TransDao
-    private var _points = MutableLiveData<Double>()
-    var Points = _points
-
     private val _portFolio = MutableLiveData<PortFolio>()
     val portFolio: LiveData<PortFolio> get() = _portFolio
 
-
-    private var repo = CryptoRepo()
-
     fun dbInit(context: Context) {
         transDao = AppDB.getInstance(context).transDao
-        getPoints()
         getPortfolio()
     }
 
     private val _error = MutableLiveData<Throwable>()
-    val error: LiveData<Throwable> get() = _error
-    private val exceptionHandler = CoroutineExceptionHandler { _, error -> _error.postValue(error)}
-
-
-    private fun getPoints() {
-        try {
-            viewModelScope.launch {
-                val points = transDao.getWorth()
-                _points.postValue(points)
-            }
-        } catch (e: Exception) {
-            e.fillInStackTrace()
-            _error.postValue(e)
-            Log.d("MainView", "Error: ${e.message}")
-        }
-    }
-
     private fun getPortfolio() {
         try {
             viewModelScope.launch {
@@ -65,32 +38,6 @@ class ThirdViewModel : ViewModel() {
             e.fillInStackTrace()
             _error.postValue(e)
             Log.d("MainView", "Error: ${e.message}")
-        }
-    }
-
-
-    fun atInstall() {
-        try {
-            viewModelScope.launch {
-                val portFolio = PortFolio("USD", 10000.0, 10000.0)
-                transDao.insertPortfolio(portFolio)
-                getPoints()
-            }
-        } catch (e: Exception) {
-            e.fillInStackTrace()
-            _error.postValue(e)
-            Log.d("InstallationGift", "Error: ${e.message}")
-        }
-    }
-
-    fun refresh() {
-        isLoading.value = true
-        viewModelScope.launch {
-            var result = withContext(Dispatchers.IO) {
-                repo.getCryptoSummary()
-            }
-            isLoading.value = false
-            liveStats.value = result
         }
     }
 }

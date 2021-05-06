@@ -19,15 +19,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="8dp"
+    <ImageView
+        android:id="@+id/seventhImage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_slanted_gradient"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pointView" />
+        app:layout_constraintTop_toBottomOf="@+id/pointView"
+        app:layout_constraintVertical_bias="0.28" />
+
+    <TextView
+        android:id="@+id/seventhType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INSTALLATION REWARD"
+        android:textColor="@color/green"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toEndOf="@+id/seventhImage"
+        app:layout_constraintTop_toBottomOf="@+id/pointView"
+        app:layout_constraintVertical_bias="0.253" />
+
+    <TextView
+        android:id="@+id/seventhValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="152dp"
+        android:text="Something for something"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seventhType"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,7 @@
         android:roundIcon="@drawable/prosperity"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidExam">
-        <activity android:name=".SeventhActivity"></activity>
+        <activity android:name=".SeventhActivity" />
         <activity android:name=".ThirdActivity" />
         <activity android:name=".SixthActivity" />
         <activity android:name=".FifthActivity" />

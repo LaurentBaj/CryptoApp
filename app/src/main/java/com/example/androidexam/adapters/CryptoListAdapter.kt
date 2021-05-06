@@ -1,6 +1,7 @@
 package com.example.androidexam.adapters
 
 import android.content.Intent
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -43,6 +44,13 @@ class CryptoListAdapter(private var list: List<CryptoStats>) : RecyclerView.Adap
             binding.cryptoSymbol.text = stats.symbol
             binding.price.text = sliceToOutput(stats.priceUsd.toString(), '$')
             Picasso.get().load("https://static.coincap.io/assets/icons/${stats.symbol.toString().toLowerCase()}@2x.png").into(binding.imageViewCrypto)
+
+            binding.changePercentage.setTextColor(
+                if(stats.changePercent24Hr.toString()!!.contains("-"))
+                    Color.parseColor("#FF0000")
+                else
+                    Color.parseColor("#32CD32")
+            )
         }
     }
 

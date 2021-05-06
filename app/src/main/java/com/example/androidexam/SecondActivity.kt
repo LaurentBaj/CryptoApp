@@ -26,14 +26,12 @@ class SecondActivity : AppCompatActivity() {
         viewModel.dbInit(this)
 
         var sharedPreferences: SharedPreferences = getSharedPreferences("com.example.androidexam.preference", Context.MODE_PRIVATE)
-
-        // Check new user
         if(sharedPreferences.getLong("FIRST_STARTUP_ID", -1L) == -1L) {
             viewModel.atInstall()
             sharedPreferences.edit().putLong("FIRST_STARTUP_ID", 1L).apply()
         }
 
-        listAdapter = CryptoListAdapter(ArrayList<CryptoStats>())
+        listAdapter = CryptoListAdapter(ArrayList())
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = listAdapter
