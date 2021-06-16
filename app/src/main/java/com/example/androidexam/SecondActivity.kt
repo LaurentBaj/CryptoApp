@@ -48,13 +48,11 @@ class SecondActivity : AppCompatActivity() {
 
     private fun observableData() {
         viewModel.Points.observe(this, {
-            binding.pointView.text = "Points: $it"
+            binding.pointView.text = "Assets: $it$"
         })
-
         viewModel.liveStats.observe(this, { newList ->
             listAdapter.update(newList)
         })
-
         viewModel.isLoading.observe(this, { loading ->
             binding.progressBar.visibility = if (loading) View.VISIBLE else View.INVISIBLE
         })

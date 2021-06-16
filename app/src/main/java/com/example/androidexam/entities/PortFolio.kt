@@ -5,9 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class PortFolio (
-        @PrimaryKey(autoGenerate = false)
+    @PrimaryKey(autoGenerate = false)
     val symbol: String,
-
-        val volume: Double,
-        var worth: Double
+    val volume: Double,
+    var worth: Double
     )

@@ -19,7 +19,7 @@ class CryptoListAdapter(private var list: List<CryptoStats>) : RecyclerView.Adap
         return CryptoViewHolder(ItemCryptoViewBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
-    override fun onBindViewHolder(holder: CryptoListAdapter.CryptoViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CryptoViewHolder, position: Int) {
         var current = list[position]
         holder.bind(current)
 

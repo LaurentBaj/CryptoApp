@@ -7,8 +7,6 @@ import androidx.room.RoomDatabase
 import com.example.androidexam.entities.PortFolio
 import com.example.androidexam.entities.TransDao
 import com.example.androidexam.entities.Transaction
-import com.example.androidexam.model.Type
-import java.security.AccessControlContext
 
 @Database(
     entities = [

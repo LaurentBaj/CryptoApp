@@ -1,17 +1,12 @@
 package com.example.androidexam
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.lifecycleScope
 import com.example.androidexam.databinding.ActivityThirdBinding
-import com.example.androidexam.entities.PortFolio
 import com.example.androidexam.viewmodel.ThirdViewModel
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
+
 
 class ThirdActivity : AppCompatActivity() {
     private lateinit var binding: ActivityThirdBinding
