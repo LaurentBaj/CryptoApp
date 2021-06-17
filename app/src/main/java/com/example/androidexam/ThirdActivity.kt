@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.androidexam.databinding.ActivityThirdBinding
 import com.example.androidexam.viewmodel.ThirdViewModel
-import com.squareup.picasso.Picasso
 
 
 class ThirdActivity : AppCompatActivity() {
@@ -17,13 +16,11 @@ class ThirdActivity : AppCompatActivity() {
         binding = ActivityThirdBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // currency is not a list yet
+        /*// currency is not a list yet
         viewModel.dbInit(this)
         viewModel.currency.observe(this, {
-            binding.output.text = it.volume.toString() + " " + it.symbol
-            binding.thirdPoints.text = it.worth.toString()
-            Picasso.get().load("https://static.coincap.io/assets/icons/${it.symbol.toLowerCase()}@2x.png").into(binding.thirdImage)
-        })
+
+        })*/
 
         // -> Transactions
         binding.toTransactions.setOnClickListener {
