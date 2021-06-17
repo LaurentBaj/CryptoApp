@@ -17,7 +17,7 @@ class SeventhActivity : AppCompatActivity() {
         val viewModel = ThirdViewModel()
 
         viewModel.dbInit(this)
-        viewModel.portFolio.observe(this, {
+        viewModel.currency.observe(this, {
             binding.seventhValue.text = it.worth.toString() + "$"
             Picasso.get().load("https://static.coincap.io/assets/icons/${it.symbol.toLowerCase()}@2x.png").into(binding.seventhImage)
         })

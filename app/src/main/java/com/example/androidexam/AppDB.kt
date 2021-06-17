@@ -4,13 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.androidexam.entities.PortFolio
+import com.example.androidexam.entities.Currency
 import com.example.androidexam.entities.TransDao
 import com.example.androidexam.entities.Transaction
 
 @Database(
     entities = [
-        PortFolio::class,
+        Currency::class,
         Transaction::class
     ],
     version = 1

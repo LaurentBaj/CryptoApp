@@ -2,16 +2,14 @@ package com.example.androidexam.viewmodel
 
 import android.content.Context
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidexam.AppDB
-import com.example.androidexam.entities.PortFolio
+import com.example.androidexam.entities.Currency
 import com.example.androidexam.entities.TransDao
 import com.example.androidexam.model.CryptoStats
 import com.example.androidexam.repos.CryptoRepo
-import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -49,7 +47,7 @@ class SecondViewModel : ViewModel() {
     fun atInstall() {
         try {
             viewModelScope.launch {
-                val portFolio = PortFolio("USD", 10000.0, 10000.0)
+                val portFolio = Currency("USD", 10000.0, 10000.0)
                 transDao.insertPortfolio(portFolio)
                 getPoints()
             }

@@ -9,35 +9,37 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidexam.adapters.CryptoListAdapter
 import com.example.androidexam.databinding.ActivitySecondBinding
-import com.example.androidexam.model.CryptoStats
 import com.example.androidexam.viewmodel.SecondViewModel
 
 class SecondActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySecondBinding
     private val viewModel = SecondViewModel()
-
     private lateinit var listAdapter: CryptoListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         viewModel.dbInit(this)
 
+
+        // Perform stuff at first startup
         var sharedPreferences: SharedPreferences = getSharedPreferences("com.example.androidexam.preference", Context.MODE_PRIVATE)
         if(sharedPreferences.getLong("FIRST_STARTUP_ID", -1L) == -1L) {
             viewModel.atInstall()
             sharedPreferences.edit().putLong("FIRST_STARTUP_ID", 1L).apply()
         }
 
-        listAdapter = CryptoListAdapter(ArrayList())
 
+
+        // Initiate empty recycler
+        listAdapter = CryptoListAdapter(ArrayList())
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = listAdapter
 
-        // Observables
-        observableData()
+
+        observableData() // Observables - Fill recycler + assets
+
 
         // -> Third Act
         binding.pointView.setOnClickListener {

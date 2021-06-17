@@ -9,20 +9,20 @@ import com.example.androidexam.entities.relations.PortWithTrans
 @Dao
 interface TransDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertPortfolio(portFolio: PortFolio)
+    suspend fun insertPortfolio(currency: Currency)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTransaction(transaction: Transaction)
 
     @androidx.room.Transaction
-    @Query("SELECT * FROM PORTFOLIO WHERE symbol = :symbol")
+    @Query("SELECT * FROM Currency WHERE symbol = :symbol")
     suspend fun getPortFolioWithTransactions(symbol: String): List<PortWithTrans>
 
     @androidx.room.Transaction
-    @Query("SELECT SUM(worth) FROM PORTFOLIO")
+    @Query("SELECT SUM(worth) FROM Currency")
     suspend fun getWorth() : Double
 
     @androidx.room.Transaction
-    @Query("SELECT * FROM PortFolio")
-    suspend fun fetchData() : PortFolio
+    @Query("SELECT * FROM Currency")
+    suspend fun fetchData() : Currency
 }
