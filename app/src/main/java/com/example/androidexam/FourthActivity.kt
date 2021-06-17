@@ -16,9 +16,11 @@ class FourthActivity : AppCompatActivity() {
         binding = ActivityFourthBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         // Data Passed by intent
         val intentPassed = intent.getStringArrayListExtra("data")
         val data = IntentData(intentPassed!![0], intentPassed[1], intentPassed[2])
+
 
         // UI
         binding.fourthCryptoName.text = data.name
@@ -26,21 +28,21 @@ class FourthActivity : AppCompatActivity() {
         Picasso.get()
                 .load("https://static.coincap.io/assets/icons/${data.symbol}@2x.png")
                 .into(binding.fourthImg)
-
         binding.userInfo.text = "You have 0 BTC \n 0 x ${data.priceUsd} \n 0 USD"
+
 
         // Buttons to fifth and sixth act
         binding.btnBuy.setOnClickListener {
-           sendIntent(Intent(this, FifthActivity::class.java), intentPassed)
+           sendIntent(Intent(this, FifthActivity::class.java), intentPassed, "Buy")
         }
-
         binding.btnSell.setOnClickListener {
-            sendIntent(Intent(this, SixthActivity::class.java), intentPassed)
+            sendIntent(Intent(this, FifthActivity::class.java), intentPassed, "Sell")
         }
     }
 
-    private fun sendIntent(intent: Intent, intentPassed: ArrayList<String>) {
+    private fun sendIntent(intent: Intent, intentPassed: ArrayList<String>, type: String) {
         intent.putExtra("data", intentPassed)
+        intent.putExtra("type", type)
         startActivity(intent)
     }
 }
