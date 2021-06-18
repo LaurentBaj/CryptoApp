@@ -2,12 +2,15 @@ package com.example.androidexam
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.androidexam.databinding.ActivityFifthBinding
 import com.example.androidexam.model.IntentData
+import com.example.androidexam.viewmodel.TransactionViewModel
 import com.squareup.picasso.Picasso
 
 class FifthActivity: AppCompatActivity() {
     private lateinit var binding: ActivityFifthBinding
+    private var viewModel = TransactionViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,21 +19,17 @@ class FifthActivity: AppCompatActivity() {
 
         val transactionType = intent.getStringExtra("type") // Decide Button: BUY || SELL
         val intentPassed = intent.getStringArrayListExtra("data") // Get currency information
-        val data = IntentData(intentPassed!![0], intentPassed[1], intentPassed[2])
+        val data = IntentData(intentPassed!![0], intentPassed[1], intentPassed[2]) // name, priceUsd, symbol
 
-        /* ** Crypto Values were supposed to change dynamically based upon USD input
 
-            viewModel.usd.observe(this, {
-                it.equals(binding.editTextBuy)
-            })
-
-            viewModel.crypto.observe(this, {
-                it.equals(binding.editTextBuy)
-            })
-
-            binding.btnTransaction.setOnClickListener {
-                viewModel.change(data.priceUsd!!.toDouble())
-            }*/
+        // Show currency-worth based upon usd-input
+        binding.convert.setOnClickListener {
+            val input = binding.editTextBuy.text.toString().toDouble()
+            val value = data.priceUsd!!.split("$")[0].toDouble()
+            binding.textCrypto.text = String.format("%.5f", (input/value))
+            viewModel.usdChange(input)
+            viewModel.convert(input, value)
+        }
 
 
         // UI
