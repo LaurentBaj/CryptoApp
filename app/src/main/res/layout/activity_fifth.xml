@@ -120,7 +120,7 @@
             android:hint="Amount"
             android:padding="16dp"
             android:inputType="number"
-            app:layout_constraintBottom_toTopOf="@+id/btnBuy"
+            app:layout_constraintBottom_toTopOf="@+id/btnTransaction"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.365"
             app:layout_constraintStart_toEndOf="@+id/fifthLabelCrypto"
@@ -128,7 +128,7 @@
             app:layout_constraintVertical_bias="0.292" />
 
         <Button
-            android:id="@+id/btnBuy"
+            android:id="@+id/btnTransaction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Buy"
@@ -149,7 +149,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnBuy"
+            app:layout_constraintTop_toBottomOf="@+id/btnTransaction"
             app:layout_constraintVertical_bias="0.486" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

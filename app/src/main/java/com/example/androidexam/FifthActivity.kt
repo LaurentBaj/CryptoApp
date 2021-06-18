@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.androidexam.databinding.ActivityFifthBinding
 import com.example.androidexam.model.IntentData
-import com.example.androidexam.viewmodel.FifthViewModel
 import com.squareup.picasso.Picasso
 
 class FifthActivity: AppCompatActivity() {
@@ -29,7 +28,7 @@ class FifthActivity: AppCompatActivity() {
                 it.equals(binding.editTextBuy)
             })
 
-            binding.btnBuy.setOnClickListener {
+            binding.btnTransaction.setOnClickListener {
                 viewModel.change(data.priceUsd!!.toDouble())
             }*/
 
@@ -38,7 +37,7 @@ class FifthActivity: AppCompatActivity() {
         binding.fifthHeaderName.text = data.name
         binding.fifthHeaderPrice.text = data.priceUsd
         binding.fifthLabelCrypto.text = data.symbol!!.toUpperCase()
-        binding.btnBuy.text = transactionType // Button
+        binding.btnTransaction.text = transactionType // Button
         Picasso.get() // Image
                 .load("https://static.coincap.io/assets/icons/${data.symbol}@2x.png")
                 .into(binding.fifthImage)

@@ -46,7 +46,7 @@ class CryptoListAdapter(private var list: List<CryptoStats>) : RecyclerView.Adap
             Picasso.get().load("https://static.coincap.io/assets/icons/${stats.symbol.toString().toLowerCase()}@2x.png").into(binding.imageViewCrypto)
 
             binding.changePercentage.setTextColor(
-                if(stats.changePercent24Hr.toString()!!.contains("-"))
+                if(stats.changePercent24Hr.toString().contains("-"))
                     Color.parseColor("#FF0000")
                 else
                     Color.parseColor("#32CD32")
